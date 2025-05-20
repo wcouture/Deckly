@@ -27,7 +27,7 @@
       [
         "expo-font",
         {
-          "fonts": ["/assets/fonts/BagelFatOne-Regular.ttf"]
+          "fonts": ["./assets/fonts/BagelFatOne-Regular.ttf"]
         }
       ],
 
