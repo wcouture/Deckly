@@ -15,7 +15,7 @@ export const selectPageStyling = StyleSheet.create({
 
   gameSelectCard: {
     width: 300,
-    height: 500,
+    height: 420,
     alignItems: "center",
     justifyContent: "center",
 
@@ -26,6 +26,11 @@ export const selectPageStyling = StyleSheet.create({
     alignSelf: "center",
     marginTop: "auto",
     marginBottom: "auto",
+  },
+
+  selectImage: {
+    width: "100%",
+    height: "100%",
   },
 
   gameCardText: {
@@ -63,10 +68,14 @@ export const gamePageStyling = StyleSheet.create({
   },
 
   gameCard: {
-    width: 300,
+    width: 347,
     height: 500,
-    borderRadius: 25,
+    borderRadius: 20,
     borderWidth: 3,
     borderColor: "black",
+    backgroundColor: "white",
+    alignContent: "center",
+    alignSelf: "center",
+    alignItems: "center",
   },
 });

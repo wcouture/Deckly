@@ -6,17 +6,15 @@ import SelectCard from "./SelectCard";
 import { selectPageStyling } from "./Styling";
 
 export type GameOption = {
-  color: string;
+  image: any;
   active: boolean;
 };
 
 const data: GameOption[] = [
-  { color: "#590309", active: false },
-  { color: "#096038", active: false },
-  { color: "#85920f", active: false },
-  { color: "#85ab19", active: false },
-  { color: "#dc38fa", active: false },
-  { color: "#590f34", active: false },
+  {
+    image: require("./game_data/playingCards/card-back-red.png"),
+    active: false,
+  },
 ];
 
 export default function Index() {
