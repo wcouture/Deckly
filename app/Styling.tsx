@@ -75,7 +75,16 @@ export const gamePageStyling = StyleSheet.create({
     borderColor: "black",
     backgroundColor: "white",
     alignContent: "center",
+
     alignSelf: "center",
     alignItems: "center",
+
+    marginTop: "auto",
+    marginBottom: "auto",
+  },
+
+  gameExitButton: {
+    top: -50,
+    textDecorationLine: "underline",
   },
 });

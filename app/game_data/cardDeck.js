@@ -1,5 +1,6 @@
 export const PlayingCardData = {
-  startTexture: require("./playingCards/card-back-red.png"),
+  topCard: { texture: require("./playingCards/card-back-red.png") },
+  bottomCard: { texture: require("./playingCards/card-back-red.png") },
   cardData: [
     { texture: require("./playingCards/1_of_clubs.png") },
     { texture: require("./playingCards/1_of_diamonds.png") },

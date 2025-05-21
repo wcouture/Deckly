@@ -1,43 +1,36 @@
 import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { ImageBackground, Pressable, SafeAreaView } from "react-native";
+import { Dimensions, SafeAreaView, Text } from "react-native";
+import Carousel from "react-native-reanimated-carousel";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import LoadGameData, { shuffle } from "./DataRetriever";
-import { gamePageStyling, selectPageStyling } from "./Styling";
+import RenderedGameCard from "./GameCard";
+import { gamePageStyling } from "./Styling";
 
-type GameCard = {
+export type GameCard = {
   details: string;
   title: string;
   texture: any;
 };
 
 export type GameData = {
-  startTexture: any;
+  topCard: GameCard;
+  bottomCard: GameCard;
   cardData: GameCard[];
 };
 
 export default function GamePage() {
   const { gameId } = useLocalSearchParams();
+  const [screenWidth, setScreenWidth] = useState(400);
+
   const [cardData, setCardData] = useState([] as GameCard[]);
-  const [gameData, setGameData] = useState({} as GameData);
 
-  const [cardImage, setCardImage] = useState({});
-
-  const [cardIndexes, setCardIndexes] = useState([] as number[]);
-
-  const handleCardTap = () => {
-    let indexes = cardIndexes;
-    let index = indexes.pop();
-    setCardIndexes(indexes);
-
-    if (index == undefined) {
-      return;
-    }
-
-    setCardImage(cardData[index].texture);
+  const exitGame = () => {
+    router.back();
   };
 
   useEffect(() => {
+    setScreenWidth(Dimensions.get("window").width);
     const data: GameData = LoadGameData(parseInt(gameId as string));
 
     if (data == undefined) {
@@ -45,38 +38,33 @@ export default function GamePage() {
       return;
     }
 
-    setGameData(data);
+    let cards = data.cardData;
+    shuffle(cards);
+
+    let final_arr = [data.topCard, cards, data.bottomCard];
+    setCardData(final_arr.flat());
   }, []);
-
-  useEffect(() => {
-    if (!gameData.startTexture) {
-      return;
-    }
-
-    const data: GameCard[] = gameData.cardData;
-    setCardData(data);
-
-    let indexes: number[] = [];
-    for (let i = 0; i < data.length; i++) {
-      indexes.push(i);
-    }
-    shuffle(indexes);
-    setCardIndexes(indexes);
-
-    setCardImage(gameData.startTexture);
-  }, [gameData]);
 
   return (
     <SafeAreaProvider>
       <SafeAreaView style={gamePageStyling.safeAreaView}>
-        <Pressable onPress={handleCardTap} style={gamePageStyling.gameCard}>
-          <ImageBackground
-            source={cardImage}
-            resizeMode="contain"
-            style={selectPageStyling.selectImage}
-            borderRadius={18}
-          ></ImageBackground>
-        </Pressable>
+        <Carousel
+          width={screenWidth}
+          loop={false}
+          snapEnabled={true}
+          data={cardData}
+          mode={"horizontal-stack"}
+          fixedDirection="negative"
+          modeConfig={{
+            snapDirection: "left",
+            stackInterval: 10,
+            showLength: 5,
+          }}
+          renderItem={RenderedGameCard}
+        />
+        <Text onPress={exitGame} style={gamePageStyling.gameExitButton}>
+          exit game
+        </Text>
       </SafeAreaView>
     </SafeAreaProvider>
   );

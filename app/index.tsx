@@ -50,7 +50,6 @@ export default function Index() {
     <SafeAreaProvider>
       <SafeAreaView style={selectPageStyling.safeAreaView}>
         <Carousel
-          testID={"xxx"}
           width={screenWidth}
           loop={true}
           snapEnabled={true}
