@@ -2,7 +2,7 @@
   "expo": {
     "name": "Deckly",
     "slug": "Deckly",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "orientation": "portrait",
     "icon": "./assets/images/deckly-icon.png",
     "scheme": "deckly",
@@ -31,9 +31,7 @@
       [
         "expo-font",
         {
-          "fonts": [
-            "./assets/fonts/BagelFatOne-Regular.ttf"
-          ]
+          "fonts": ["./assets/fonts/BagelFatOne-Regular.ttf"]
         }
       ],
       "expo-router",
