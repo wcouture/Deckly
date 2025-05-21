@@ -52,3 +52,21 @@ export const selectPageStyling = StyleSheet.create({
     backgroundColor: "#888",
   },
 });
+
+export const gamePageStyling = StyleSheet.create({
+  safeAreaView: {
+    width: "100%",
+    height: "100%",
+
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  gameCard: {
+    width: 300,
+    height: 500,
+    borderRadius: 25,
+    borderWidth: 3,
+    borderColor: "black",
+  },
+});
