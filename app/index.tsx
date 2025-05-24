@@ -8,12 +8,19 @@ import { selectPageStyling } from "./Styling";
 export type GameOption = {
   image: any;
   active: boolean;
+  multiplayer: boolean;
 };
 
 const data: GameOption[] = [
   {
     image: require("./game_data/playingCards/card-back-red.png"),
     active: false,
+    multiplayer: false,
+  },
+  {
+    image: require("./game_data/uno/uno-card-back.png"),
+    active: false,
+    multiplayer: true,
   },
 ];
 

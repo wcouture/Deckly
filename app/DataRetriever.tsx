@@ -9,8 +9,17 @@ export default function LoadGameData(id: number): GameData {
       return require("./game_data/kingsCup.js") as GameData;
   }
   return {
-    startTexture: undefined,
     cardData: [],
+    topCard: {
+      details: "",
+      title: "",
+      texture: undefined,
+    },
+    bottomCard: {
+      details: "",
+      title: "",
+      texture: undefined,
+    },
   };
 }
 

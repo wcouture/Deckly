@@ -88,3 +88,24 @@ export const gamePageStyling = StyleSheet.create({
     textDecorationLine: "underline",
   },
 });
+
+export const multiplayerStyling = StyleSheet.create({
+  safeAreaView: {
+    alignItems: "center",
+    height: "100%",
+  },
+
+  buttonContainer: {
+    marginTop: "auto",
+    marginBottom: "auto",
+  },
+
+  connectionButton: {
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 15,
+
+    marginBottom: 10,
+    padding: 15,
+  },
+});

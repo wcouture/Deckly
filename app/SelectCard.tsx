@@ -9,6 +9,10 @@ export default function SelectCard(props: { item: GameOption; index: number }) {
   const [gameImage, setGameImage] = useState("");
 
   const handleCardSelect = () => {
+    if (props.item.multiplayer) {
+      router.push(`/Multiplayer`);
+      return;
+    }
     router.push(`/GamePage?gameId=${props.index}`);
   };
 

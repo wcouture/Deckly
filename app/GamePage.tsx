@@ -33,7 +33,7 @@ export default function GamePage() {
     setScreenWidth(Dimensions.get("window").width);
     const data: GameData = LoadGameData(parseInt(gameId as string));
 
-    if (data == undefined) {
+    if (!data.topCard || !data.topCard.texture) {
       router.back();
       return;
     }
