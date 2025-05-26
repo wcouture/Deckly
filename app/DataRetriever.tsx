@@ -3,10 +3,11 @@ import { GameData } from "./GamePage";
 export default function LoadGameData(id: number): GameData {
   switch (id) {
     case 0:
-      const data = require("./game_data/cardDeck");
-      return data.PlayingCardData;
+      const cards = require("./game_data/cardDeck");
+      return cards.PlayingCardData;
     case 1:
-      return require("./game_data/kingsCup.js") as GameData;
+      const uno = require("./game_data/unoCards");
+      return uno.UnoCards;
   }
   return {
     cardData: [],
