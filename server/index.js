@@ -10,10 +10,6 @@ const cors = require("cors");
 
 app.use(cors());
 
-export default function init() {
-  return true;
-}
-
 const socketIO = require("socket.io")(http, {
   cors: {
     origin: "<http://localhost:3000>",
