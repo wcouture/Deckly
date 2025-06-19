@@ -7,7 +7,7 @@ const io = new Server(httpServer);
 const PORT = 3000;
 
 io.on("connection", (socket) => {
-  socket.emit("connected", "connected");
+  socket.send("connected");
 });
 
 io.on("createLobby", (socket) => {
