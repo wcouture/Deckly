@@ -4,7 +4,7 @@ const io = new Server();
 const PORT = 3000;
 
 io.on("connection", (socket) => {
-  console.log("connected");
+  console.log("connected, socket: ", socket.id);
   socket.send("connected");
 });
 
