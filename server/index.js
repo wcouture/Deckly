@@ -1,9 +1,5 @@
-const http = require("http");
-const httpServer = http.createServer();
+const io = require("socket.io");
 
-const { Server } = require("socket.io");
-
-const io = new Server(httpServer);
 const PORT = 3000;
 
 io.on("connection", (socket) => {
@@ -14,4 +10,4 @@ io.on("createLobby", (socket) => {
   socket.emit("lobbyCreated", "lobbyCreated");
 });
 
-httpServer.listen(PORT);
+io.listen(PORT);
