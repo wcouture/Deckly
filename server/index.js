@@ -1,4 +1,5 @@
-const io = require("socket.io");
+const { Server } = require("socket.io");
+const io = new Server();
 
 const PORT = 3000;
 
