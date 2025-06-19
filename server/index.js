@@ -6,3 +6,7 @@ const SERVER = new Server(PORT);
 io.on("connection", (socket) => {
   socket.emit("connected", true);
 });
+
+io.on("createLobby", (socket) => {
+  socket.emit("lobbyCreated", "lobbyCreated");
+});

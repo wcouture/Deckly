@@ -5,6 +5,8 @@ socket.on("connected", (arg) => {
   console.log(arg);
 });
 
-socket.emit("howdy", "stranger");
+socket.on("lobbyCreated", (arg) => {
+  console.log(arg);
+});
 
 export default socket;
