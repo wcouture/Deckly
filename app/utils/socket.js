@@ -1,15 +1,32 @@
 import { io } from "socket.io-client";
-const socket = io.connect("ws://apps.willc-dev.net");
+export const socket = io.connect("http://localhost:3000", {
+  transports: ["websocket"],
+});
 
-socket.on("connected", (arg) => {
-  console.log(arg);
+socket.on("connect", () => {
   console.log("connected");
 });
 
-socket.on("lobbyCreated", (arg) => {
-  console.log(arg);
+socket.on("lobbyCreated", (data) => {
+  console.log("lobbyCreated", data);
 });
 
-socket.emit("createLobby");
+export function createLobby() {
+  socket.emit("createLobby", "newLobby");
+}
 
-export default socket;
+export function joinLobby(lobbyName) {
+  socket.emit("joinLobby", lobbyName);
+
+  socket.on("lobbyJoined", (data) => {
+    console.log("lobbyJoined", data);
+  });
+
+  socket.on("lobbyNotFound", (data) => {
+    console.log("lobbyNotFound", data);
+  });
+}
+
+export function closeConnection() {
+  socket.disconnect();
+}
