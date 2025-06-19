@@ -9,4 +9,6 @@ socket.on("lobbyCreated", (arg) => {
   console.log(arg);
 });
 
+socket.emit("createLobby");
+
 export default socket;
