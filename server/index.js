@@ -1,7 +1,10 @@
-const { Server } = require("socket.io");
-const PORT = 3000;
+const http = require("http");
+const httpServer = http.createServer();
 
-const SERVER = new Server(PORT);
+const { Server } = require("socket.io");
+
+const io = new Server(httpServer);
+const PORT = 3000;
 
 io.on("connection", (socket) => {
   socket.emit("connected", true);
@@ -10,3 +13,5 @@ io.on("connection", (socket) => {
 io.on("createLobby", (socket) => {
   socket.emit("lobbyCreated", "lobbyCreated");
 });
+
+httpServer.listen(PORT);
